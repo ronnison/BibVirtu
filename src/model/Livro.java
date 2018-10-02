@@ -6,6 +6,7 @@
 package model;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 import javax.swing.ImageIcon;
 
@@ -18,21 +19,21 @@ public class Livro {
     private int codigo;
     private String nome;
     private String autor;
-    private int ano;
-    private ImageIcon capa;
+    private Date ano;
+    private int capa;
     private float nota;
     private String resenha;
-    private Calendar cadastro;
+    private Date cadastro;
 
     public Livro() {
     }
 
-    public Livro(int codigo, String nome, String autor, int ano, ImageIcon capa, float nota, String resenha, Calendar cadastro) {
+    public Livro(int codigo, String nome, String autor, Date ano, int capa, float nota, String resenha, Date cadastro) {
         this.codigo = codigo;
         this.nome = nome;
         this.autor = autor;
-        this.ano = ano;
         this.capa = capa;
+        this.ano = ano;
         this.nota = nota;
         this.resenha = resenha;
         this.cadastro = cadastro;
@@ -41,20 +42,6 @@ public class Livro {
     @Override
     public String toString() {
         return "Livro{" + "codigo=" + codigo + ", nome=" + nome + ", autor=" + autor + ", ano=" + ano + ", nota=" + nota + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 17 * hash + this.codigo;
-        hash = 17 * hash + Objects.hashCode(this.nome);
-        hash = 17 * hash + Objects.hashCode(this.autor);
-        hash = 17 * hash + this.ano;
-        hash = 17 * hash + Objects.hashCode(this.capa);
-        hash = 17 * hash + Float.floatToIntBits(this.nota);
-        hash = 17 * hash + Objects.hashCode(this.resenha);
-        hash = 17 * hash + Objects.hashCode(this.cadastro);
-        return hash;
     }
 
     @Override
@@ -93,6 +80,20 @@ public class Livro {
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + this.codigo;
+        hash = 47 * hash + Objects.hashCode(this.nome);
+        hash = 47 * hash + Objects.hashCode(this.autor);
+        hash = 47 * hash + Objects.hashCode(this.ano);
+        hash = 47 * hash + this.capa;
+        hash = 47 * hash + Float.floatToIntBits(this.nota);
+        hash = 47 * hash + Objects.hashCode(this.resenha);
+        hash = 47 * hash + Objects.hashCode(this.cadastro);
+        return hash;
+    }
+
     
     
     public int getCodigo() {
@@ -119,19 +120,19 @@ public class Livro {
         this.autor = autor;
     }
 
-    public int getAno() {
+    public Date getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(Date ano) {
         this.ano = ano;
     }
 
-    public ImageIcon getCapa() {
+    public int getCapa() {
         return capa;
     }
 
-    public void setCapa(ImageIcon capa) {
+    public void setCapa(int capa) {
         this.capa = capa;
     }
 
@@ -151,11 +152,11 @@ public class Livro {
         this.resenha = resenha;
     }
 
-    public Calendar getCadastro() {
+    public Date getCadastro() {
         return cadastro;
     }
 
-    public void setCadastro(Calendar cadastro) {
+    public void setCadastro(Date cadastro) {
         this.cadastro = cadastro;
     }
     

@@ -29,16 +29,19 @@ public class LivroDAO {
 	
 	public void adiciona (Livro livro) {
 		
-		String sql = "insert into livro (nome, email, endereco, dataNascimento)"
-				+ " values (?, ?, ?,?)";
+		String sql = "insert into livro(nome, autor, capa, ano, nota, resenha, data_cadastro)"
+				+ " values (?, ?, ?,?, ?, ?, ?)";
 		
 		try {
 			
 			PreparedStatement stm = con.prepareStatement(sql);
 			stm.setString(1, livro.getNome());
-//			stm.setString(2, livro.getEndereco());
-//			stm.setString(3, livro.getEmail());
-//			stm.setDate(4, new Date(livro.getDataNascimento().getTimeInMillis()));
+			stm.setString(2, livro.getAutor());
+			stm.setInt(3, livro.getCapa());
+			stm.setDate(4, (Date)livro.getAno());
+                        stm.setFloat(5, livro.getNota());
+                        stm.setString(6, livro.getResenha());
+                        stm.setDate(7, (Date)livro.getCadastro());
 			
 			stm.execute();
 			stm.close();
@@ -64,7 +67,7 @@ public class LivroDAO {
 				Livro c = new Livro();
 				c.setAutor(rs.getString("autor"));
                                 c.setNome(rs.getString("nome"));
-				c.setAno(rs.getInt("ano"));
+				c.setAno(rs.getDate("ano"));
                                 c.setNota(rs.getFloat("nota"));
 				
 				lista.add(c);

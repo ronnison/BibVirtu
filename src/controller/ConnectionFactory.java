@@ -18,8 +18,8 @@ public class ConnectionFactory {
     
     public Connection getConnection () {
         try {
-            con = DriverManager.getConnection("jdbc:sqlite:/home/ronnison/NetBeansProjects/BibVirtu/src/bibvirtubd", "ronnison", "12345");
-//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibvirtubd", "ronnison", "mysqlp4ssw0rd");                                
+//            con = DriverManager.getConnection("jdbc:sqlite:/home/ronnison/NetBeansProjects/BibVirtu/src/bibvirtubd", "ronnison", "12345");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibvirtubd", "ronnison", "mysqlp4ssw0rd");                                
             System.out.println("Conectou");
 //            con.close();
         } catch (Exception e) {
